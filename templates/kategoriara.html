@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css')}}">
+	<title>Ana sayfa</title>
+</head>
+<body>
+	<h2>Kategori Bul</h3>
+	<p>Aranan Kategori: <u>{{ kategori.upper() }}</u></p>
+	<hr>
+	<p>Bu <u>Kategoriye</u> Ait <b>Konular</b></p>
+		{% for a, b, c, d, e in konular %}
+			<a href="/m/{{ a }}"><u>{{ b.upper() }}</u></a><br>
+		{% endfor %}
+	<hr>
+	<a href="/paylas"><u>Yazı Paylaş</u></a>
+</body>
+</html>

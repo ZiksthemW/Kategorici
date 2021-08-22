@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css')}}">
+	<title>Ana sayfa</title>
+</head>
+<body>
+	<h2>Yazı bul, paylaş!</h3>
+	<p>Yazı bulmak veya paylaşmak, sistemlerimiz sayesinde artık daha kolay.<br>Sen de ilkel sitelerden sıkıldın mı? O zaman tamamen yenilikçi olan sistemimiz sizi kollarını açarak bekliyor!</p>
+	<hr>
+	<p>Mevcut <u>Kategoriler</u></p>
+	<table align="center">
+		<tbody>
+			<tr>
+		{% for i in kategoriler %}
+				<td><a href="/kategori/{{ i }}"><u>{{ i.upper() }}</u></a></td>
+		{% endfor %}
+			</tr>
+		</tbody>
+	</table>
+	<hr>
+	<a href="/paylas"><u>Yazı Paylaş</u></a>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css')}}">
+	<title>Yazı paylaş</title>
+</head>
+<body>
+	<h2>Yazı paylaş!</h3>
+	<p>Okurların ufkunu genişletecek bir yazı yazmaya hazır mısınız?<br>Çünkü biz öyleyiz.</p>
+	<hr>
+	<p><u>Bilgileri Doldurun</u></p>
+	<form method="POST">
+		<input type="text" name="baslik" placeholder="Yazı Başlığı" minlength="3" maxlength="10" required="">
+		<br><br>
+		<textarea name="icerik" placeholder="Yazı İçeriği. Max 200 harf." minlength="5" maxlength="200" cols="50" rows="10" required=""></textarea>
+		<br><br>
+		<input type="text" name="kategori" placeholder="Kategori" minlength="1" maxlength="7" required="">
+		<br><br>
+		<button type="submit">Yazıyı Paylaş!</button>
+	</form><br>
+	<hr>
+</body>
+</html>
