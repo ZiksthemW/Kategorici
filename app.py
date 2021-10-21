@@ -114,11 +114,19 @@ def iid(iid):
 	else:
 		abort(404)
 
-@app.route("/admin/yazilar")
+@app.route("/admin/makaleler", methods = ["GET", "POST"])
 def adminyazilar():
 	if session["Admin"] == True:
-		yazilar = database.dbsorgu("paylasimlar")
-		return render_template("/admin/yazilar.html", yazilar=yazilar)
+		if request.method == "GET":
+			yazilar = database.dbsorgu(f"paylasimlar ORDER BY rowid DESC LIMIT 5")
+			return render_template("/admin/makaleler.html", yazilar=yazilar)
+		if request.method == "POST":
+			yazi = request.form.get("arama")
+			if len(yazi) > 0:
+				yazilar = database.dbsorgu(f"paylasimlar WHERE baslik LIKE '{ yazi }%'")
+				print(yazilar)
+				return render_template("/admin/makaleler.html", yazilar=yazilar)
+			return "Hata!"
 	abort(404)
 
 @app.route("/admin/reddet/<int:yaziid>")
@@ -141,4 +149,4 @@ def makale(mid):
 
 if __name__ == '__main__':
 	database.tabloolustur()
-	app.run(debug=False, host="0.0.0.0")
+	app.run(debug=True)
