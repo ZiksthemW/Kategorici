@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css')}}">
+	<title>Admin Ekle - Kategorici</title>
+</head>
+<body>
+	<div class="sidebar">
+	  <a href="/admin">Ana Sayfa</a>
+	  {% if session["User"] == "root" %}
+	  <a class="active" href="#">Admin Ekle</a>
+	  {% endif %}
+	  <a href="makaleler">Makaleler</a>
+	  <a href="ihbarlar">İhbarlar</a>
+	</div>
+	<h2>Admin Ekle</h3>
+	<p>Siteye yeni bir şövalye ekle.</p>
+	<hr>
+	<p><u>Bilgileri Doldurun</u></p>
+	<form action="" method="POST">
+		<input type="text" name="kullaniciadi" placeholder="Kullanıcı Adı" required="">
+		<br><br>
+		<input type="password" name="parola" placeholder="Parola" required="">
+		<br><br>
+		<input type="text" name="mail" placeholder="Mail Adresi" required="">
+		<br><br>
+		<button type="submit">Ekle!</button>
+	</form><br>
+	<hr>
+</body>
+</html>
