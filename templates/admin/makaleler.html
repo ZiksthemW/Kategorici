@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css')}}">
+	<title>Ana sayfa</title>
+</head>
+<body>
+	<div class="sidebar">
+	  <a href="#">Ana Sayfa</a>
+	  {% if session["User"] == "root" %}
+	  <a href="yeni">Admin Ekle</a>
+	  {% endif %}
+      <a class="active" href="#">Makaleler</a>
+	  <a href="ihbarlar">İhbarlar</a>
+	</div>
+	<h2>Makale Yönet</h3>
+	<p>Buradan makale arayıp silebilirsiniz.</p>
+	<hr>
+    <form method="post">
+        <input name="arama" type="text" placeholder="Makale Arayın.." required=""/>
+        <button type="submit">Arama Yap</button> 
+    </form>
+    <hr>
+    {% if yazilar|length >= 1 %}
+		{% for yid, bslk, icrk, ktgr, ip in yazilar %}
+			<p>Makale: <a href="/m/{{ yid }}"><u>{{ bslk }}</u></a></p>
+			<p><u> {{ icrk[:35] }} </u><br>--<br><a href="/admin/reddet/{{ yid }}"><u>Makaleyi Kaldır</u></a></p>
+			<hr>
+		{% endfor %}
+    {% else %}
+		<p> Veri tabanında yazı bulunmmakta! </p>
+		<hr>
+	{% endif %}
+	<a href="/"><u>Çıkış Yap</u></a>
+</body>
+</html>
