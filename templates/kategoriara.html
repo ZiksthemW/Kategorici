@@ -9,10 +9,14 @@
 	<h2>Kategori Bul</h3>
 	<p>Aranan Kategori: <u>{{ kategori.upper() }}</u></p>
 	<hr>
-	<p>Bu <u>Kategoriye</u> Ait <b>Konular</b></p>
+	<p>Bu <u>Kategoriye</u> Ait <b>Konular</b>:</p>
+	{% if konular|length >= 1 %}
 		{% for a, b, c, d, e in konular %}
 			<a href="/m/{{ a }}"><u>{{ b.upper() }}</u></a><br>
 		{% endfor %}
+	{% else %}
+		<p> Bu kategoriye ait konu yok! </p>
+	{% endif %}
 	<hr>
 	<a href="/paylas"><u>Yazı Paylaş</u></a>
 </body>
