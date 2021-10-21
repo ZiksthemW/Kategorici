@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css')}}">
+	<title>Ana sayfa</title>
+</head>
+<body>
+	<div class="sidebar">
+	  <a class="active" href="#">Ana Sayfa</a>
+	  {% if session["User"] == "root" %}
+	  <a href="admin/yeni">Admin Ekle</a>
+	  {% endif %}
+	  <a href="admin/makaleler">Makaleler</a>
+	  <a href="admin/ihbarlar">İhbarlar</a>
+	</div>
+	<h2>Admin Paneli</h3>
+	<p>Merhaba, <u>{{ session["User"] }}</u>!</p>
+	<hr>
+	<p>Buradan paylaşılan yazıları, yakın bir gelecekte de yorumları kontrol edebilirsin!</p>
+	<hr>
+	<a href="/"><u>Çıkış Yap</u></a>
+</body>
+</html>
