@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css')}}">
+	<title>İhbarlar - Kategorici</title>
+</head>
+<body>
+	<div class="sidebar">
+	  <a href="/admin">Ana Sayfa</a>
+	  {% if session["User"] == "root" %}
+	  <a href="yeni">Admin Ekle</a>
+	  {% endif %}
+	  <a href="makaleler">Makaleler</a>
+	  <a class="active" href="#">İhbarlar</a>
+	</div>
+	<h2>İhbarlar</h3>
+	<p>Üyeler tarafından yapılan ihbarları buradan modere edebilirsiniz.</p>
+	<hr>
+	{% if ihbarlar|length >= 1 %}
+		{% for ihbar in ihbarlar %}
+			<p>İhbar: <a href="/m/{{ ihbar[1] }}"><u>{{ ihbar[1] }}</u></a></p>
+			<p><u> {{ ihbar[2] }} </u><br>--<br><a href="ihbarlar/tamamla/{{ ihbar[0] }}"><u>Tamamla</u></a></p>
+			<hr>
+		{% endfor %}
+		{% else %}
+			<p> Modere edilmesi gereken yazı yok! </p>
+			<hr>
+	{% endif %}
+	<a href="/"><u>Çıkış Yap</u></a>
+</body>
+</html>
