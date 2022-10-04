@@ -149,4 +149,4 @@ def makale(mid):
 
 if __name__ == '__main__':
 	database.tabloolustur()
-	app.run(debug=True)
+	app.run(debug=False, host="0.0.0.0", port=8080)
